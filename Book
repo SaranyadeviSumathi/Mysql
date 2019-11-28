@@ -1,0 +1,351 @@
+saranya@saranya:~$ mysql -u saranya -p;
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 2
+Server version: 5.7.28-0ubuntu0.18.04.4 (Ubuntu)
+
+Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database table;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to 
+mysql> CREATE DATABASE sample;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> USE sample;
+Database changed
+mysql> create table book(id int,author VARCHAR(20), title VARCHAR(20), submit_date DATE,PRIMARY KEY(id));
+Query OK, 0 rows affected (0.20 sec)
+
+mysql> INSERT INTO book values(1,'john','PHP',NOW());
+Query OK, 1 row affected, 1 warning (0.05 sec)
+
+mysql> INSERT INTO book values(2,'sanj','java',NOW());
+Query OK, 1 row affected, 1 warning (0.05 sec)
+
+mysql> INSERT INTO book values(3,'abdul','sql','2007-5-8');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from book;
++----+--------+-------+-------------+
+| id | author | title | submit_date |
++----+--------+-------+-------------+
+|  1 | john   | PHP   | 2019-11-26  |
+|  2 | sanj   | java  | 2019-11-26  |
+|  3 | abdul  | sql   | 2007-05-08  |
++----+--------+-------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> Drop table book;
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> create table book(id int,author VARCHAR(20), title VARCHAR(20), submit_date DATE,PRIMARY KEY(id));
+Query OK, 0 rows affected (0.21 sec)
+
+mysql> INSERT INTO book values(1,'john','PHP',NOW());
+Query OK, 1 row affected, 1 warning (0.03 sec)
+
+mysql> INSERT INTO book values(2,'sanj','java',NOW());
+Query OK, 1 row affected, 1 warning (0.03 sec)
+
+mysql> INSERT INTO book values(3,'abdul','sql','2007-5-8');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from book;
++----+--------+-------+-------------+
+| id | author | title | submit_date |
++----+--------+-------+-------------+
+|  1 | john   | PHP   | 2019-11-26  |
+|  2 | sanj   | java  | 2019-11-26  |
+|  3 | abdul  | sql   | 2007-05-08  |
++----+--------+-------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> Delete from book;
+Query OK, 3 rows affected (0.03 sec)
+
+mysql> select * from book;
+Empty set (0.00 sec)
+
+mysql> INSERT INTO book values(1,'john','PHP',NOW());
+Query OK, 1 row affected, 1 warning (0.03 sec)
+
+mysql> INSERT INTO book values(2,'sanj','java',NOW());
+Query OK, 1 row affected, 1 warning (0.03 sec)
+
+mysql> INSERT INTO book values(3,'abdul','sql','2007-5-8');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> update book set submit_date='2008-07-09' where author='sanj';
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from book
+    -> ;
++----+--------+-------+-------------+
+| id | author | title | submit_date |
++----+--------+-------+-------------+
+|  1 | john   | PHP   | 2019-11-26  |
+|  2 | sanj   | java  | 2008-07-09  |
+|  3 | abdul  | sql   | 2007-05-08  |
++----+--------+-------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from book where author='john';
++----+--------+-------+-------------+
+| id | author | title | submit_date |
++----+--------+-------+-------------+mysql> Alter table book add index(price);
+Query OK, 0 rows affected (0.22 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from book;
++----+--------+--------+-------------+-------+
+| id | author | title  | submit_date | price |
++----+--------+--------+-------------+-------+
+|  1 | john   | PHP    | 2019-11-26  |  NULL |
+|  2 | sanj   | java   | 2008-07-09  |  NULL |
+|  3 | abdul  | sql    | 2007-05-08  |  NULL |
+|  4 | guido  | python | 2001-09-10  |  NULL |
++----+--------+--------+-------------+-------+
+4 rows in set (0.00 sec)
+
+
+|  1 | john   | PHP   | 2019-11-26  |
++----+--------+-------+-------------+
+1 row in set (0.00 sec)
+
+mysql> select * from book where title='java' AND  id='2';
++----+--------+-------+-------------+
+| id | author | title | submit_date |
++----+--------+-------+-------------+
+|  2 | sanj   | java  | 2008-07-09  |
++----+--------+-------+-------------+
+1 row in set (0.00 sec)
+
+mysql> select * from book where id>1;
++----+--------+-------+-------------+
+| id | author | title | submit_date |
++----+--------+-------+-------------+
+|  2 | sanj   | java  | 2008-07-09  |
+|  3 | abdul  | sql   | 2007-05-08  |
++----+--------+-------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> select author , title from book;
++--------+-------+mysql> Alter table book add index(price);
+Query OK, 0 rows affected (0.22 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from book;
++----+--------+--------+-------------+-------+
+| id | author | title  | submit_date | price |
++----+--------+--------+-------------+-------+
+|  1 | john   | PHP    | 2019-11-26  |  NULL |
+|  2 | sanj   | java   | 2008-07-09  |  NULL |mysql> Alter table book add index(price);
+Query OK, 0 rows affected (0.22 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from book;
++----+--------+--------+-------------+-------+
+| id | author | title  | submit_date | price |
++----+--------+--------+-------------+-------+
+|  1 | john   | PHP    | 2019-11-26  |  NULL |
+|  2 | sanj   | java   | 2008-07-09  |  NULL |
+|  3 | abdul  | sql    | 2007-05-08  |  NULL |
+|  4 | guido  | python | 2001-09-10  |  NULL |
++----+--------+--------+-------------+-------+
+4 rows in set (0.00 sec)
+
+
+|  3 | abdul  | sql    | 2007-05-08  |  NULL |
+|  4 | guido  | python | 2001-09-10  |  NULL |
++----+--------+--------+-------------+-------+
+4 rows in set (0.00 sec)
+
+
+| author | title |
++--------+-------+
+| john   | PHP   |
+| sanj   | java  |
+| abdul  | sql   |
++--------+-------+
+3 rows in set (0.00 sec)
+
+mysql> INSERT INTO book values(4,'guido','python','2001-09-10');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO book values(5,'ROSSUM','python','2019-11-26');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from book;
++----+--------+--------+-------------+
+| id | author | title  | submit_date |
++----+--------+--------+-------------+
+|  1 | john   | PHP    | 2019-11-26  |
+|  2 | sanj   | java   | 2008-07-09  |
+|  3 | abdul  | sql    | 2007-05-08  |
+|  4 | guido  | python | 2001-09-10  |
+|  5 | ROSSUM | python | 2019-11-26  |
++----+--------+--------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> select distinct title from book;
++--------+
+| title  |
++--------+
+| PHP    |
+| java   |
+| sql    |
+| python |
++--------+
+4 rows in set (0.00 sec)
+
+mysql> select author, title from book where author='guido' OR title='python';
++--------+--------+
+| author | title  |
++--------+--------+
+| guido  | python |
+| ROSSUM | python |
++--------+--------+
+2 rows in set (0.00 sec)
+
+mysql> Delete from book  where author='ROSSUM';
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from book;
++----+--------+--------+-------------+
+| id | author | title  | submit_date |
++----+--------+--------+-------------+
+|  1 | john   | PHP    | 2019-11-26  |
+|  2 | sanj   | java   | 2008-07-09  |
+|  3 | abdul  | sql    | 2007-05-08  |
+|  4 | guido  | python | 2001-09-10  |
++----+--------+--------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from book where title like 'p%';
++----+--------+--------+-------------+
+| id | author | title  | submit_date |
++----+--------+--------+-------------+
+|  1 | john   | PHP    | 2019-11-26  |
+|  4 | guido  | python | 2001-09-10  |
++----+--------+--------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from book where title like '%l';
++----+--------+-------+-------------+
+| id | author | title | submit_date |
++----+--------+-------+-------------+
+|  3 | abdul  | sql   | 2007-05-08  |
++----+--------+-------+-------------+
+1 row in set (0.00 sec)
+
+mysql> select * from book where title like '%h%';
++----+--------+--------+-------------+
+| id | author | title  | submit_date |
++----+--------+--------+-------------+
+|  1 | john   | PHP    | 2019-11-26  |
+|  4 | guido  | python | 2001-09-10  |
++----+--------+--------+-------------+
+2 rows in set (0.01 sec)
+
+mysql> select author from book ORDER BY author;
++--------+
+| author |
++--------+
+| abdul  |
+| guido  |
+| john   |
+| sanj   |
++--------+
+4 rows in set (0.00 sec)
+
+mysql> select author,title from book ORDER BY author;
++--------+--------+
+| author | title  |
++--------+--------+
+| abdul  | sql    |
+| guido  | python |
+| john   | PHP    |
+| sanj   | java   |
++--------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select author,title from book ORDER BY author DESC;
++--------+--------+
+| author | title  |
++--------+--------+
+| sanj   | java   |
+| john   | PHP    |
+| guido  | python |
+| abdul  | sql    |
++--------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select author,title from book ORDER BY title,author DESC;
++--------+--------+
+| author | title  |
++--------+--------+
+| sanj   | java   |
+| john   | PHP    |
+| guido  | python |
+| abdul  | sql    |
++--------+--------+
+4 rows in set (0.00 sec)
+
+mysql> ALTER TABLE book ADD COLUMN COST int;
+Query OK, 0 rows affected (0.40 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from book;
++----+--------+--------+-------------+------+
+| id | author | title  | submit_date | COST |
++----+--------+--------+-------------+------+
+|  1 | john   | PHP    | 2019-11-26  | NULL |
+|  2 | sanj   | java   | 2008-07-09  | NULL |
+|  3 | abdul  | sql    | 2007-05-08  | NULL |
+|  4 | guido  | python | 2001-09-10  | NULL |
++----+--------+--------+-------------+------+
+4 rows in set (0.00 sec)
+
+mysql> ALTER TABLE book CHANGE COST price int;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from book;
++----+--------+--------+-------------+-------+
+| id | author | title  | submit_date | price |
++----+--------+--------+-------------+-------+
+|  1 | john   | PHP    | 2019-11-26  |  NULL |
+|  2 | sanj   | java   | 2008-07-09  |  NULL |
+|  3 | abdul  | sql    | 2007-05-08  |  NULL |
+|  4 | guido  | python | 2001-09-10  |  NULL |
++----+--------+--------+-------------+-------+
+4 rows in set (0.00 sec)
+
+mysql> Alter table book add index(price);
+Query OK, 0 rows affected (0.22 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from book;
++----+--------+--------+-------------+-------+
+| id | author | title  | submit_date | price |
++----+--------+--------+-------------+-------+
+|  1 | john   | PHP    | 2019-11-26  |  NULL |
+|  2 | sanj   | java   | 2008-07-09  |  NULL |
+|  3 | abdul  | sql    | 2007-05-08  |  NULL |
+|  4 | guido  | python | 2001-09-10  |  NULL |
++----+--------+--------+-------------+-------+
+4 rows in set (0.00 sec)
+
+ 
+
+
+
+
+
