@@ -341,11 +341,65 @@ mysql> select * from book;
 |  3 | abdul  | sql    | 2007-05-08  |  NULL |
 |  4 | guido  | python | 2001-09-10  |  NULL |
 +----+--------+--------+-------------+-------+
+4 rows in set
+
+mysql> create table subject(id int, title varchar(20),submit_date Date);
+Query OK, 0 rows affected (0.17 sec)(0.00 sec)
+
+mysql> insert into subject values(1,'AI',now());
+Query OK, 1 row affected, 1 warning (0.03 sec)
+
+mysql> insert into subject values(1,'java','2019-11-26');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into subject values(1,'DWDM','2008-07-09');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from subject
+    -> ;
++------+-------+-------------+
+| id   | title | submit_date |
++------+-------+-------------+
+|    1 | AI    | 2019-11-28  |
+|    1 | java  | 2019-11-26  |
+|    1 | DWDM  | 2008-07-09  |
++------+-------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> select s.title,b.title from book b inner join subject s on b.title=m.title;
+ERROR 1054 (42S22): Unknown column 'm.title' in 'on clause'
+mysql> select s.title,b.title from book b inner join subject s on b.title=s.title;
++-------+-------+
+| title | title |
++-------+-------+
+| java  | java  |
++-------+-------+
+1 row in set (0.00 sec)
+
+mysql> select s.title,b.title from book b left join subject s on b.title=s.title;
++-------+--------+
+| title | title  |
++-------+--------+
+| java  | java   |
+| NULL  | PHP    |
+| NULL  | sql    |
+| NULL  | python |
++-------+--------+
 4 rows in set (0.00 sec)
 
- 
+mysql> select s.title,b.title from book b right join subject s on b.title=s.title;
++-------+-------+
+| title | title |
++-------+-------+
+| java  | java  |
+| AI    | NULL  |
+| DWDM  | NULL  |
++-------+-------+
+3 rows in set (0.00 sec)
 
+mysql> truncate table subject;
+Query OK, 0 rows affected (0.14 sec)
 
-
-
+mysql> select * from subject;
+Empty set (0.00 sec)
 
